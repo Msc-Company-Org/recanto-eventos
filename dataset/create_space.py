@@ -214,9 +214,9 @@ def run_local_fallback(lead, message):
         if any(w in normalized for w in ["sim", "quero", "reserva", "fechar", "pix"]):
             local_reserve_date(lead, lead["nome"], lead["data"], lead["pacote"])
             half_price = f"R$ {total_val / 2:,.2f}".replace(".", "X").replace(",", ".").replace("X", ",")
-            reply = f"Perfeito, {lead['nome']}! Já fiz a reserva temporária da sua data de {lead['data']} por 24 horas! 🥳\\n\\nPara confirmar, nosso Pix CNPJ é: `12.345.678/0001-90` (Recanto Eventos Ltda).\\n\\nO valor do sinal de 50% fica em **{half_price}**.\\n\\nAssim que enviar, é só mandar o comprovante por aqui. Posso te ajudar em algo mais? 🍨💜"
+            reply = f"Perfeito, {lead['nome']}! Já fiz a reserva temporária da sua data de {lead['data']} por 24 horas! 🥳\\n\\nO sinal de 50% fica em **{half_price}**. Para confirmar com segurança, nosso time comercial envia os dados oficiais de pagamento por aqui — sem passar dados sensíveis automaticamente.\\n\\nPosso te ajudar em algo mais? 🍨💜"
     else:
-        reply = f"Opa, {lead['nome']}! Já temos todos os dados do seu evento mapeados aqui no CRM. Seu lead está super quente! \\n\\nNossa chave Pix CNPJ para o sinal de 50% é: `12.345.678/0001-90`. Se tiver mais alguma dúvida sobre acompanhamentos ou montagem, só me chamar! 🍨"
+        reply = f"Opa, {lead['nome']}! Já temos todos os dados do seu evento mapeados aqui no CRM. Seu lead está super quente! \\n\\nPara o sinal de 50%, nosso time comercial te envia os dados oficiais de pagamento com segurança. Se tiver mais alguma dúvida sobre acompanhamentos ou montagem, só me chamar! 🍨"
         
     lead["logs"].append(f"[Naiara] {reply[:60]}...")
     return reply

@@ -323,10 +323,10 @@ function localMockSimulation(leadId, message, lead) {
     if (normalized.includes("sim") || normalized.includes("quero") || normalized.includes("reserva") || normalized.includes("fechar") || normalized.includes("pix")) {
       reservarDataTemporaria(leadId, l.nome, l.telefone || 'cliente_whatsapp', l.data, l.pacote);
       const halfPrice = (totalVal / 2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-      replyText = `Perfeito, ${l.nome}! Já fiz a reserva temporária da sua data de ${l.data} por 24 horas! 🥳[MSG_BREAK]Para confirmar, nosso Pix CNPJ é: \`12.345.678/0001-90\` (Recanto Eventos Ltda).[MSG_BREAK]O valor do sinal de 50% fica em **${halfPrice}**.[MSG_BREAK]Assim que enviar, é só mandar o comprovante por aqui. Posso te ajudar em algo mais? 🍨💜`;
+      replyText = `Perfeito, ${l.nome}! Já fiz a reserva temporária da sua data de ${l.data} por 24 horas! 🥳[MSG_BREAK]O sinal de 50% fica em **${halfPrice}**. Para confirmar com segurança, nosso time comercial envia os dados oficiais de pagamento por aqui — sem passar dados sensíveis automaticamente.[MSG_BREAK]Posso te ajudar em algo mais? 🍨💜`;
     }
   } else {
-    replyText = `Opa, ${l.nome}! Já temos todos os dados do seu evento mapeados aqui no CRM. Seu lead está super quente! [MSG_BREAK]Nossa chave Pix CNPJ para o sinal de 50% é: \`12.345.678/0001-90\`. Se tiver mais alguma dúvida sobre acompanhamentos ou montagem, só me chamar! 🍨`;
+    replyText = `Opa, ${l.nome}! Já temos todos os dados do seu evento mapeados aqui no CRM. Seu lead está super quente! [MSG_BREAK]Para o sinal de 50%, nosso time comercial te envia os dados oficiais de pagamento com segurança. Se tiver mais alguma dúvida sobre acompanhamentos ou montagem, só me chamar! 🍨`;
   }
 
   // Push messages to history

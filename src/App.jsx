@@ -438,7 +438,7 @@ export default function App() {
 
               replyText = `Maneiro demais, ${updatedCrm.nome}! Seu orçamento está pronto: o **${updatedCrm.pacote}** para **${updatedCrm.convidados} pessoas** em **${updatedCrm.local}** fica no total de **${formattedTotal}**. \n\nComo a data de ${updatedCrm.data} é concorrida, quer que eu faça a reserva temporária dela de 24h sem custo pra você garantir? Para confirmar, a gente faz o Pix de 50% de sinal. O que acha? 💜`;
             } else if (updatedCrm.status === '[Aguardando Sinal]' || updatedCrm.intencaoPix) {
-              replyText = `Perfeito, ${updatedCrm.nome}! Já executei a ferramenta \`reservar_data_temporaria\` e sua data de ${updatedCrm.data} está pré-reservada por 24 horas! 🥳 \n\nO Pix de sinal de 50% pode ser enviado para a nossa chave CNPJ: \`12.345.678/0001-90\` (Recanto Eventos Ltda). Assim que fizer, é só mandar o comprovante por aqui que eu confirmo a data! Alguma outra dúvida? 🍨💜`;
+              replyText = `Perfeito, ${updatedCrm.nome}! Já executei a ferramenta \`reservar_data_temporaria\` e sua data de ${updatedCrm.data} está pré-reservada por 24 horas! 🥳 \n\nPara confirmar com segurança, nosso time comercial te envia os dados oficiais de pagamento por aqui — sem passar dados sensíveis automaticamente. Alguma outra dúvida? 🍨💜`;
             } else {
               replyText = `Opa, ${updatedCrm.nome}! Já temos todos os dados do seu evento de açaí mapeados aqui no CRM. Seu lead está super quente! Se tiver mais alguma dúvida sobre coberturas, logística ou equipe, é só mandar! Se quiser fechar, podemos gerar o Pix de sinal. 🍨`;
             }
@@ -2441,7 +2441,7 @@ export default function App() {
               {checkoutStep === 'payment' && (
                 <div className="max-w-xl mx-auto flex flex-col gap-5">
                   <h4 className="font-heading font-bold text-lg text-brand-purple-dark">Processar Pagamento Seguro</h4>
-                  <p className="text-[11px] text-brand-muted -mt-3">A transação está sendo processada de forma segura pelo Gateway Stripe.</p>
+                  <p className="text-[11px] text-brand-muted -mt-3">Demonstração do fluxo de pagamento. Os dados oficiais de cobrança são enviados pelo nosso time comercial após a confirmação da reserva.</p>
                   
                   {/* Payment Tabs Selection */}
                   <div className="flex bg-cream-bg p-1 rounded-2xl border border-brand-purple/10">
@@ -2475,17 +2475,16 @@ export default function App() {
                         </div>
                         
                         <div className="flex flex-col items-center gap-1.5 w-full">
-                          <span className="text-[10px] font-bold text-brand-muted">Ou use a chave Pix Copia e Cola (CNPJ):</span>
+                          <span className="text-[10px] font-bold text-brand-muted">Chave Pix oficial (CNPJ) enviada após a confirmação:</span>
                           <div className="flex bg-cream-bg border border-brand-purple/15 rounded-xl px-4 py-2 text-xs font-bold text-brand-purple-dark justify-between w-full max-w-sm">
-                            <span>12.345.678/0001-90</span>
+                            <span>Enviada pelo time após reserva</span>
                             <button
                               onClick={() => {
-                                navigator.clipboard.writeText("12.345.678/0001-90");
-                                showToast("CNPJ Copiado!", "success");
+                                showToast("Nosso time envia a chave Pix oficial após a reserva.", "success");
                               }}
                               className="text-brand-pink hover:underline text-[10px] font-black cursor-pointer"
                             >
-                              COPIAR
+                              SAIBA MAIS
                             </button>
                           </div>
                         </div>
