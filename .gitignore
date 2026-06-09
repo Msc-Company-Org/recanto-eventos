@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+coverage/
+__pycache__/
+*.py[cod]
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.local
+
+# Local runtime state
+backend/crm_db.json
+*.log
+logs/
+dataset/space_*.log
+
+# Vercel local metadata
+.vercel/
+
+# Raw source media kept locally; optimized public/ assets are versioned
+Principais Assets/
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
