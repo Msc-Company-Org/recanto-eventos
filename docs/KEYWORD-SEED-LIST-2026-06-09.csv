@@ -1,0 +1,51 @@
+keyword,cluster,intent,match_type_recommended,volume_proxy,paid_difficulty_proxy,organic_difficulty_proxy,priority,landing_or_content
+buffet de açaí para festas rj,Açaí Geral,Contratação,exact/phrase,Médio,Média,Média,P0,Landing principal
+buffet de acai para festas rj,Açaí Geral,Contratação,exact/phrase,Médio,Média,Média,P0,Landing principal
+buffet de açaí para eventos rj,Açaí Geral,Contratação,phrase,Médio,Média,Média,P0,Landing principal
+buffet de acai para eventos rj,Açaí Geral,Contratação,phrase,Médio,Média,Média,P0,Landing principal
+estação de açaí para festa rj,Açaí Geral,Contratação,phrase,Médio,Média,Baixa-Média,P0,Landing principal
+estacao de acai para festa rj,Açaí Geral,Contratação,phrase,Médio,Média,Baixa-Média,P0,Landing principal
+estação de açaí e sorvete para festa,Açaí+Sorvete,Contratação,phrase,Médio,Média,Média,P0,Landing principal
+estacao de acai e sorvete para festa,Açaí+Sorvete,Contratação,phrase,Médio,Média,Média,P0,Landing principal
+carrinho de açaí para eventos rj,Carrinho,Contratação,phrase,Médio,Média,Média,P0,Landing + seção carrinho
+carrinho de acai para eventos rj,Carrinho,Contratação,phrase,Médio,Média,Média,P0,Landing + seção carrinho
+carrinho de açaí para festa,Carrinho,Contratação,phrase,Médio,Média,Média,P1,Landing
+carrinho de acai para aniversario,Carrinho/Aniversário,Contratação,phrase,Baixo-Médio,Baixa-Média,Baixa,P1,Landing infantil
+buffet de sorvete para festa rj,Sorvete,Contratação,phrase,Médio-Alto,Média-Alta,Média,P0,Ad group sorvete
+buffet de sorvete para eventos rj,Sorvete,Contratação,phrase,Médio,Média-Alta,Média,P0,Ad group sorvete
+carrinho de sorvete para eventos rj,Sorvete,Contratação,phrase,Médio,Média,Média,P1,Landing sorvete
+carrinho de sorvete para festa infantil,Sorvete Infantil,Contratação,phrase,Médio,Média,Média,P1,Landing infantil
+sorvete para festa infantil,Sorvete Infantil,Consideração,phrase,Médio,Média,Média,P1,Blog + landing
+sorvete para festa de casamento,Sorvete Casamento,Consideração,phrase,Baixo-Médio,Média,Baixa-Média,P2,Blog casamento
+açaí para festa infantil rj,Infantil,Contratação,phrase,Baixo-Médio,Baixa-Média,Baixa,P1,Landing infantil
+acai para festa infantil rj,Infantil,Contratação,phrase,Baixo-Médio,Baixa-Média,Baixa,P1,Landing infantil
+açaí para festa de aniversário,Aniversário,Consideração,phrase,Médio,Média,Média,P1,Blog + landing
+acai para festa de aniversario,Aniversário,Consideração,phrase,Médio,Média,Média,P1,Blog + landing
+carrinho de açaí casamento rj,Casamento,Contratação,phrase,Baixo-Médio,Média,Baixa-Média,P1,Landing casamento
+buffet de açaí para casamento rj,Casamento,Contratação,phrase,Baixo-Médio,Média,Baixa-Média,P1,Landing casamento
+estação de açaí para casamento,Casamento,Contratação,phrase,Baixo-Médio,Média,Baixa-Média,P1,Landing casamento
+estação gourmet para casamento,Casamento,Consideração,broad/phrase,Médio,Média-Alta,Média,P2,Blog casamento
+buffet de açaí corporativo rj,Corporativo,Contratação,phrase,Baixo,Baixa,Baixa,P1,Landing corporativa
+açaí para evento corporativo rj,Corporativo,Contratação,phrase,Baixo,Baixa,Baixa,P1,Landing corporativa
+buffet para eventos corporativos rj,Corporativo,Contratação,phrase,Médio,Média-Alta,Alta,P2,Blog corporativo
+confraternização empresa rj ideias,Corporativo,Topo,broad/phrase,Médio,Média,Média,P2,Blog corporativo
+buffet de açaí em domicílio rj,Domicílio,Contratação,phrase,Médio,Média,Média,P1,Landing
+buffet de sorvete em casa rj,Domicílio,Contratação,phrase,Baixo-Médio,Média,Média,P2,Blog + landing
+buffet de açaí perto de mim,Local,Contratação,phrase,Médio,Média,Média,P1,Landing local
+buffet de sorvete perto de mim,Local,Contratação,phrase,Médio,Média,Média,P1,Landing local
+buffet de açaí barra da tijuca,Local Bairro,Contratação,phrase,Baixo,Baixa,Baixa,P2,Página bairro
+estação de açaí recreio,Local Bairro,Contratação,phrase,Baixo,Baixa,Baixa,P2,Página bairro
+carrinho de açaí copacabana,Local Bairro,Contratação,phrase,Baixo,Baixa,Baixa,P2,Página bairro
+buffet de açaí niterói,Local Cidade,Contratação,phrase,Baixo-Médio,Baixa-Média,Baixa,P2,Página cidade
+açaí para festa tijuca,Local Bairro,Contratação,phrase,Baixo,Baixa,Baixa,P2,Página bairro
+estação de sorvete baixada fluminense,Local Região,Contratação,phrase,Baixo,Baixa,Baixa,P2,Página região
+ideias diferentes para festa infantil,Topo Infantil,Descoberta,broad/phrase,Alto,Média,Alta,P2,Blog
+ o que servir em festa infantil além de salgadinho,Topo Infantil,Descoberta,broad/phrase,Médio,Média,Média,P2,Blog
+carrinho gourmet para casamento,Casamento,Consideração,phrase,Médio,Média,Alta,P2,Blog
+ideias para casamento no verão,Casamento,Descoberta,broad/phrase,Médio,Média,Média,P3,Blog
+ideias para festa de 15 anos diferente,15 anos,Descoberta,broad/phrase,Médio,Média,Média,P2,Blog
+como calcular buffet para 100 pessoas,Logística,Consideração,broad/phrase,Médio,Média,Média,P2,Blog
+buffet de açaí vale a pena,Consideração,Meio,broad/phrase,Baixo,Baixa,Baixa,P2,Blog
+como evitar fila em buffet de festa,Operação,Meio,broad/phrase,Baixo,Baixa,Baixa,P3,Blog
+mesa de açaí para festa,Mesa/Estação,Contratação,phrase,Baixo-Médio,Baixa-Média,Baixa,P1,Landing
+estação gourmet de açaí,Mesa/Estação,Contratação,phrase,Baixo-Médio,Baixa-Média,Baixa,P1,Landing

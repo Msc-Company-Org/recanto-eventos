@@ -1,5 +1,9 @@
 # 🚀 Guia de Configuração e Mídia: Google, Meta & TikTok Ads
 
+> [!IMPORTANT]
+> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](docs/COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
+
+
 Este guia orienta o planejamento e a veiculação comercial das campanhas pagas do **Recanto Eventos** nas três principais plataformas de tráfego: **Google Ads**, **Meta Ads** e **TikTok Ads**. 
 
 Integramos no código do site um sistema de **Dupla Camada de Rastreamento**, permitindo que os eventos de pixel sejam disparados tanto via Google Tag Manager (GTM) quanto por chamadas nativas diretas.

@@ -1,5 +1,9 @@
 # 🎯 Playbook de Copywriting & Criativos: Recanto Eventos
 
+> [!IMPORTANT]
+> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](docs/COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
+
+
 Este documento serve como guia estratégico para alinhar os textos persuasivos (copywriting) com as fotos e vídeos reais do **Recanto Eventos** na Landing Page e em campanhas de **Meta Ads (Facebook e Instagram)**. 
 
 Com a transição de portfólio focada exclusivamente em **Açaí e Sorvete Gourmet**, toda a comunicação foi refinada para construir valor, destacando a cremosidade, a variedade de toppings e a sofisticação da mesa decorada rústico-chique.

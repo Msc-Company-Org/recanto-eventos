@@ -37,6 +37,8 @@ bun run dev
 ## Documentação principal
 
 - `docs/RECANTO-EVENTOS-RELATORIO-2026-06-09.md` — relatório completo com inventário, limpeza, decisões, segurança, dataset, Hugging Face e próximos passos.
+- `docs/COPYWRITING-MASTERPLAN-2026-06-09.md` — masterplan de copy, keywords, naming, Google Ads, Meta Ads, TikTok, Instagram, blog e criativos.
+- `docs/KEYWORD-SEED-LIST-2026-06-09.csv` — lista operacional de keywords para importar no Keyword Planner/Google Ads.
 - `dataset/README.md` — documentação específica do dataset Naiara v2.
 
 ## Estrutura
