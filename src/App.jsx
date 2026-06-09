@@ -830,7 +830,7 @@ export default function App() {
           intencaoPix: true
         };
         const newLogs = [...prev.logs];
-        newLogs.push(`[System] Pagamento processado via ${paymentMethod === 'card' ? 'Cartão (Stripe Simulado)' : 'Pix com sinal'}`);
+        newLogs.push(`[System] Pagamento processado via ${paymentMethod === 'card' ? 'Cartão (simulado)' : 'Pix com sinal (simulado)'}`);
         newLogs.push(`[System] Reserva Confirmada! Fatura: ${invoiceNumber}`);
         newLogs.push(`[Tool Call] disparar_webhook_reserva_confirmada(invoice="${invoiceNumber}", total="${simTotal}") -> OK`);
         updated.logs = newLogs;
@@ -2147,7 +2147,7 @@ export default function App() {
                     <div className="text-3xl mb-3">💳</div>
                     <h4 className="font-heading font-bold text-sm text-brand-purple-dark">Fechar Online</h4>
                     <p className="text-[10px] text-brand-muted font-medium mt-2 leading-relaxed">
-                      Pague online via Pix (com desconto) ou em até 12x no cartão de crédito via Stripe. Seguro e imediato!
+                      Simule o fechamento online via Pix ou cartão. Os dados oficiais de cobrança são enviados pelo nosso time após a confirmação da reserva.
                     </p>
                   </div>
                   <button
@@ -2221,7 +2221,7 @@ export default function App() {
               <div className="flex items-center gap-3">
                 <span className="text-xl">🔒</span>
                 <div>
-                  <h3 className="font-heading font-black text-lg leading-none">Checkout Seguro Stripe</h3>
+                  <h3 className="font-heading font-black text-lg leading-none">Checkout (Demonstração)</h3>
                   <span className="text-[9px] text-white/70 font-semibold uppercase tracking-wider">Fatura: {invoiceNumber}</span>
                 </div>
               </div>
@@ -2455,7 +2455,7 @@ export default function App() {
                       onClick={() => setPaymentMethod('card')}
                       className={`flex-1 flex items-center justify-center h-11 text-xs font-bold rounded-xl transition-all ${paymentMethod === 'card' ? 'bg-brand-purple text-white shadow-sm' : 'text-brand-muted hover:text-brand-purple'}`}
                     >
-                      💳 Cartão de Crédito (Stripe)
+                      💳 Cartão de Crédito
                     </button>
                   </div>
 
@@ -2607,7 +2607,7 @@ export default function App() {
                     <div><strong>Fatura:</strong> {invoiceNumber}</div>
                     <div><strong>Cliente:</strong> {formData.name}</div>
                     <div><strong>Pacote:</strong> {formData.package.split('(')[0]}</div>
-                    <div><strong>Status do Pagamento:</strong> <span className="text-brand-green font-bold">Pago via Stripe/Pix</span></div>
+                    <div><strong>Status do Pagamento:</strong> <span className="text-brand-green font-bold">Reserva registrada (simulação)</span></div>
                     <div className="border-t border-brand-purple/10 pt-2 text-[10px] text-brand-muted leading-relaxed">
                       O contrato e o recibo de sinal foram enviados para o e-mail <strong>{checkoutData.email}</strong> e a confirmação para o WhatsApp registrado.
                     </div>
