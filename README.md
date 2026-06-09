@@ -34,6 +34,11 @@ bun run dev
 
 > O backend ainda não está publicado. Enquanto não houver deploy/API pública, a landing page usa fallback client-side para a simulação do chat.
 
+## Documentação principal
+
+- `docs/RECANTO-EVENTOS-RELATORIO-2026-06-09.md` — relatório completo com inventário, limpeza, decisões, segurança, dataset, Hugging Face e próximos passos.
+- `dataset/README.md` — documentação específica do dataset Naiara v2.
+
 ## Estrutura
 
 - `src/` — aplicação React da landing page
