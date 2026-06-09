@@ -59,12 +59,12 @@ Para colocar essas melhorias em prática imediatamente, atualizamos os arquivos 
     "@type": "LocalBusiness",
     "name": "Recanto do Açaí",
     "image": "/logo.png",
-    "telephone": "+5511999999999"
+    "telephone": "+5521981749450"
   },
   "serviceType": "Buffet de Açaí e Sorvete para Festas",
   "areaServed": {
     "@type": "AdministrativeArea",
-    "name": "Região Metropolitana e Cidades Vizinhas"
+    "name": "Rio de Janeiro, Niterói e Região Metropolitana"
   },
   "offers": {
     "@type": "AggregateOffer",
