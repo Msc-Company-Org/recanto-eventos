@@ -19,6 +19,7 @@ bun install
 bun run lint
 bun run build
 bun audit.js
+bun dataset/generate_dataset_v2.js
 bun dataset/validate_dataset.js
 ```
 
@@ -53,6 +54,18 @@ Não versionar:
 - logs gerados localmente
 - pasta local de mídia bruta `Principais Assets/`
 
+## Dataset e Hugging Face
+
+Dataset ativo: `dataset/naiara_dataset_v2.jsonl`.
+
+Publicação privada padrão:
+
+```bash
+HF_TOKEN=... python dataset/upload_to_hf.py
+```
+
+Repositório HF padrão: `Finish-him/naiara-recanto-dataset-v2`.
+
 ## Próximo objetivo grande
 
-Melhorar a qualidade do dataset da Naiara e continuar publicando/treinando no Hugging Face antes de qualquer publicação de backend em produção.
+Expandir e auditar o dataset v2 da Naiara, publicar versões no Hugging Face e só então treinar/avaliar o modelo antes de qualquer publicação de backend em produção.

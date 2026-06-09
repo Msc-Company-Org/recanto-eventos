@@ -55,7 +55,7 @@ def format_prompts(examples):
 print("📊 Carregando e formatando o dataset...")
 # Carrega o arquivo do Hugging Face Hub de forma privada
 TOKEN = os.environ.get("HF_TOKEN", "")
-REPO_NAME = "Finish-him/naiara-recanto-dataset"
+REPO_NAME = os.environ.get("HF_DATASET_REPO", "Finish-him/naiara-recanto-dataset-v2")
 if not TOKEN:
     raise RuntimeError("HF_TOKEN environment variable is required")
 
