@@ -3,7 +3,7 @@ const path = require('path');
 
 // Target files to audit
 const HTML_FILE_PATH = path.join(__dirname, 'index.html');
-const REPORT_OUTPUT_PATH = path.join(__dirname, 'seo_audit_report.md');
+const REPORT_OUTPUT_PATH = path.join(__dirname, 'docs', 'relatorios', 'seo-audit.md');
 
 console.log('🔍 Iniciando Auditoria SEO e Boas Práticas do Recanto Eventos...');
 

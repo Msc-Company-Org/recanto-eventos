@@ -11,11 +11,12 @@
 
 1. Instruções do usuário na conversa atual
 2. Este `AGENTS.md`
-3. `README.md`, `package.json`, `vite.config.js`
-4. `src/App.jsx`, `src/index.css`, `index.html`
-5. `backend/agent.js`, `backend/crm.js`, `backend/index.js`
-6. Documentos `.md` de SEO, Ads, copywriting e chatbot
-7. Alexandria/Obsidian para decisões duráveis
+3. `docs/ESTADO-DO-PROJETO.md` (retrato atual do projeto)
+4. `README.md`, `package.json`, `vite.config.js`
+5. `src/App.jsx`, `src/index.css`, `index.html`
+6. `backend/agent.js`, `backend/crm.js`, `backend/index.js`
+7. Docs canônicos em `docs/`: `COPYWRITING-MASTERPLAN-*.md` (marketing) e `NAIARA-CHATBOT.md` (chatbot); histórico em `docs/legacy/`
+8. Alexandria/Obsidian para decisões duráveis
 
 ## Regras de trabalho
 
@@ -40,6 +41,7 @@ Devem ficar fora do Git:
 - `dist/`
 - `backend/crm_db.json`
 - logs locais
+- artefatos gerados por scripts de dataset/treino (`space_files/`, `outputs/`, `lora_adapters/`)
 - `Principais Assets/` (mídia bruta local; `public/` contém os assets otimizados versionados)
 
 ## Próximo grande objetivo

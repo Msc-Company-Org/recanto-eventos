@@ -1,7 +1,7 @@
-# 📈 Estratégia de SEO Orgânico & Campanhas Google Ads: Recanto Eventos
+﻿# 📈 Estratégia de SEO Orgânico & Campanhas Google Ads: Recanto Eventos
 
 > [!IMPORTANT]
-> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](docs/COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
+> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](../COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
 
 
 Este documento detalha o planejamento estratégico de palavras-chave locais do Rio de Janeiro, copywriting altamente persuasivo (AIDA) com sotaque carioca e a estrutura das campanhas de Google Ads para o **Recanto Eventos** dominar o mercado de buffet móvel de açaí e sorvete.

@@ -36,9 +36,13 @@ bun run dev
 
 ## Documentação principal
 
-- `docs/RECANTO-EVENTOS-RELATORIO-2026-06-09.md` — relatório completo com inventário, limpeza, decisões, segurança, dataset, Hugging Face e próximos passos.
-- `docs/COPYWRITING-MASTERPLAN-2026-06-09.md` — masterplan de copy, keywords, naming, Google Ads, Meta Ads, TikTok, Instagram, blog e criativos.
+- `docs/ESTADO-DO-PROJETO.md` — retrato único do que foi feito, implementado, planejado, desatualizado e os próximos passos. **Comece por aqui.**
+- `docs/COPYWRITING-MASTERPLAN-2026-06-09.md` — masterplan canônico de copy, keywords, naming, Google Ads, Meta Ads, TikTok, Instagram, blog e criativos.
+- `docs/NAIARA-CHATBOT.md` — persona, arquitetura, ferramentas, CRM e treino do chatbot Naiara.
+- `docs/RECANTO-EVENTOS-RELATORIO-2026-06-09.md` — relatório operacional (inventário, limpeza, decisões, segurança, dataset, Hugging Face).
 - `docs/KEYWORD-SEED-LIST-2026-06-09.csv` — lista operacional de keywords para importar no Keyword Planner/Google Ads.
+- `docs/relatorios/` — relatórios de dados (campanhas 2023–2026, auditoria SEO gerada por `audit.js`).
+- `docs/legacy/` — documentos antigos arquivados, substituídos pelos canônicos acima.
 - `dataset/README.md` — documentação específica do dataset Naiara v2.
 
 ## Estrutura
@@ -47,7 +51,7 @@ bun run dev
 - `public/` — assets otimizados usados em produção
 - `backend/` — API Express local do chatbot/CRM
 - `dataset/` — scripts e dataset inicial para Hugging Face/Unsloth
-- `*.md` — estratégia de SEO, mídia, copywriting e playbooks comerciais
+- `docs/` — documentação de produto, marketing, chatbot e relatórios
 
 ## Segurança e versionamento
 
