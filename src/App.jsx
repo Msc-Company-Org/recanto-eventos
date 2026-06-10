@@ -1,19 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-
-const STORE_WHATSAPP_NUMBER = '5521981749450'; // WhatsApp comercial RJ
-
-const BASE_PRICES = {
-  '3': 1290.00,
-  '4': 1390.00
-};
-
-const GUEST_EXTRA_COSTS = {
-  '50': 0.00,
-  '80': 250.00,
-  '120': 450.00,
-  '150': 650.00,
-  '200': null // Sob consulta
-};
+import { STORE_WHATSAPP_NUMBER, BASE_PRICES, GUEST_EXTRA_COSTS } from './lib/constants.js';
+import { calculateTotalByCount, formatCurrency } from './lib/pricing.js';
+import { calculateLeadScore, getTemperature, getLeadStatus } from './lib/leadScoring.js';
+import WhatsIncludedSection from './components/WhatsIncludedSection.jsx';
+import GallerySection from './components/GallerySection.jsx';
+import TeamSection from './components/TeamSection.jsx';
+import TestimonialsSection from './components/TestimonialsSection.jsx';
 
 export default function App() {
   // Navigation & Menu States
@@ -100,25 +92,10 @@ export default function App() {
         };
 
         // Recalculate score
-        let score = 0;
-        if (updated.nome) score += 10;
-        if (updated.telefone) score += 10;
-        if (updated.data) score += 20;
-        if (updated.convidados) score += 15;
-        if (updated.pacote) score += 15;
-        if (updated.local) score += 10;
-        if (updated.disponibilidadeChecada) score += 10;
-        if (updated.intencaoPix) score += 10;
-
+        let score = calculateLeadScore(updated);
         updated.score = score;
-        updated.temperatura = score < 40 ? 'Frio ❄️' : score <= 75 ? 'Morno 🔥' : 'Quente 🌋';
-
-        const newStatus = score >= 90
-          ? (prev.intencaoPix ? '[Aguardando Sinal]' : '[Lead Quente]')
-          : score >= 40
-            ? '[Orçamento em Andamento]'
-            : '[Lead Novo]';
-        updated.status = newStatus;
+        updated.temperatura = getTemperature(score);
+        updated.status = getLeadStatus(score, prev.intencaoPix);
 
         // Add logs for new details detected
         const newLogs = [...prev.logs];
@@ -142,25 +119,6 @@ export default function App() {
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
-
-  const calculateScore = (data) => {
-    let score = 0;
-    if (data.nome) score += 10;
-    if (data.telefone) score += 10;
-    if (data.data) score += 20;
-    if (data.convidados) score += 15;
-    if (data.pacote) score += 15;
-    if (data.local) score += 10;
-    if (data.disponibilidadeChecada) score += 10;
-    if (data.intencaoPix) score += 10;
-    return score;
-  };
-
-  const getTemperature = (score) => {
-    if (score < 40) return 'Frio ❄️';
-    if (score <= 75) return 'Morno 🔥';
-    return 'Quente 🌋';
-  };
 
   const pushGTMEvent = (eventName, eventData) => {
     try {
@@ -360,7 +318,7 @@ export default function App() {
             toolCalls.push(`consultar_disponibilidade(data="${updatedCrm.data}", horario="18:00") -> Livre`);
           }
 
-          let score = calculateScore(updatedCrm);
+          let score = calculateLeadScore(updatedCrm);
           updatedCrm.score = score;
           updatedCrm.temperatura = getTemperature(score);
 
@@ -426,15 +384,9 @@ export default function App() {
             } else if (!updatedCrm.telefone) {
               replyText = `Perfeito! Já tenho quase todas as informações. Me passa seu WhatsApp/telefone para eu registrar no cadastro e te mandar o espelho do orçamento formatado? 📞`;
             } else if (updatedCrm.status === '[Lead Quente]') {
-              let baseVal = updatedCrm.pacote.includes("3") ? 1290 : 1390;
-              let extraVal = 0;
-              let convNum = parseInt(updatedCrm.convidados);
-              if (convNum > 50 && convNum <= 80) extraVal = 250;
-              else if (convNum > 80 && convNum <= 120) extraVal = 450;
-              else if (convNum > 120 && convNum <= 150) extraVal = 650;
-
-              const totalVal = baseVal + extraVal;
-              const formattedTotal = totalVal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+              const duration = updatedCrm.pacote.includes("3") ? '3' : '4';
+              const totalVal = calculateTotalByCount(duration, updatedCrm.convidados);
+              const formattedTotal = formatCurrency(totalVal);
 
               replyText = `Maneiro demais, ${updatedCrm.nome}! Seu orçamento está pronto: o **${updatedCrm.pacote}** para **${updatedCrm.convidados} pessoas** em **${updatedCrm.local}** fica no total de **${formattedTotal}**. \n\nComo a data de ${updatedCrm.data} é concorrida, quer que eu faça a reserva temporária dela de 24h sem custo pra você garantir? Para confirmar, a gente faz o Pix de 50% de sinal. O que acha? 💜`;
             } else if (updatedCrm.status === '[Aguardando Sinal]' || updatedCrm.intencaoPix) {
@@ -509,25 +461,10 @@ export default function App() {
       }
 
       // Recalculate lead score
-      let score = 0;
-      if (updated.nome) score += 10;
-      if (updated.telefone) score += 10;
-      if (updated.data) score += 20;
-      if (updated.convidados) score += 15;
-      if (updated.pacote) score += 15;
-      if (updated.local) score += 10;
-      if (updated.disponibilidadeChecada) score += 10;
-      if (updated.intencaoPix) score += 10;
-
+      let score = calculateLeadScore(updated);
       updated.score = score;
-      updated.temperatura = score < 40 ? 'Frio ❄️' : score <= 75 ? 'Morno 🔥' : 'Quente 🌋';
-
-      const newStatus = score >= 90
-        ? (prev.intencaoPix ? '[Aguardando Sinal]' : '[Lead Quente]')
-        : score >= 40
-          ? '[Orçamento em Andamento]'
-          : '[Lead Novo]';
-      updated.status = newStatus;
+      updated.temperatura = getTemperature(score);
+      updated.status = getLeadStatus(score, prev.intencaoPix);
 
       // Append CRM Logs
       const newLogs = [...prev.logs];
@@ -647,12 +584,6 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Format currency helper
-  const formatCurrency = (val) => {
-    if (typeof val === 'string') return val;
-    return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  };
 
   // Toast trigger
   const showToast = (message, type = 'success') => {
@@ -1397,248 +1328,16 @@ export default function App() {
       </section>
 
       {/* WHAT'S INCLUDED SECTION */}
-      <section id="whats-included" className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-brand-pink font-heading font-black text-xs uppercase tracking-wider">
-              EXPERIÊNCIA RECANTO
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-4xl text-brand-purple-dark mt-2 mb-4">
-              Tudo o que Cuidamos para o Seu Evento Brilhar
-            </h2>
-            <p className="text-brand-muted text-sm font-semibold leading-relaxed">
-              Nossa equipe se encarrega de toda a logística e serviço para você focar em curtir cada segundo da festa.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: '🎪', title: 'Estação Gourmet', desc: 'Levamos mesa decorada no estilo rústico-chique, taças térmicas profissionais e descartáveis de alta qualidade.' },
-              { icon: '🍓', title: 'Ingredientes Selecionados', desc: 'Frutas frescas fatiadas no mesmo dia (morango e banana), caldas especiais e mais de 15 toppings premium.' },
-              { icon: '🧑‍🍳', title: 'Serviço com Sorriso', desc: 'Operadores uniformizados e treinados para montar os copos com rapidez, simpatia e total higiene.' },
-              { icon: '🧹', title: 'Limpeza Impecável', desc: 'Chegamos 1 hora antes para a montagem e, após a festa, deixamos todo o espaço limpo e organizado.' }
-            ].map((item, index) => (
-              <div key={index} className="card-premium text-left flex flex-col justify-between">
-                <div>
-                  <div className="text-4xl mb-6">{item.icon}</div>
-                  <h3 className="font-heading font-black text-lg text-brand-purple mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-brand-muted font-semibold leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <WhatsIncludedSection />
 
       {/* GALLERY SECTION */}
-      <section className="py-24 border-t border-brand-purple/10">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-brand-pink font-heading font-black text-xs uppercase tracking-wider">
-              GALERIA REAL
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-4xl text-brand-purple-dark mt-2 mb-4">
-              Açaí e Sorvete de Verdade no Seu Evento
-            </h2>
-            <p className="text-brand-muted text-sm font-semibold leading-relaxed">
-              Confira fotos e vídeos reais do nosso buffet em ação no Rio de Janeiro. Transparência e sabor de verdade!
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Video 1: Operação Servindo */}
-            <div className="bg-white border border-brand-purple/15 rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative aspect-video sm:aspect-square md:aspect-video rounded-2xl overflow-hidden bg-black">
-                <video
-                  src="/luana_servindo.mp4"
-                  controls
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="mt-3 px-2">
-                <h4 className="font-heading font-bold text-sm text-brand-purple">Operação em Ação</h4>
-                <p className="text-[10px] text-brand-muted font-semibold mt-0.5">Veja nossa equipe servindo copos fartos e cremosos.</p>
-              </div>
-            </div>
-
-            {/* Video 2: Sorvete Qualidade */}
-            <div className="bg-white border border-brand-purple/15 rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative aspect-video sm:aspect-square md:aspect-video rounded-2xl overflow-hidden bg-black">
-                <video
-                  src="/sorvete_qualidade.mp4"
-                  controls
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="mt-3 px-2">
-                <h4 className="font-heading font-bold text-sm text-brand-purple">Sorvetes Especiais</h4>
-                <p className="text-[10px] text-brand-muted font-semibold mt-0.5">Textura aveludada e cremosidade garantida na festa.</p>
-              </div>
-            </div>
-
-            {/* Photo 1: Acai de perto */}
-            <div className="bg-white border border-brand-purple/15 rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative aspect-video sm:aspect-square md:aspect-video rounded-2xl overflow-hidden bg-cream-bg">
-                <img
-                  src="/acai_de_perto.jpg"
-                  alt="Açaí cremoso de perto"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="mt-3 px-2">
-                <h4 className="font-heading font-bold text-sm text-brand-purple">Açaí Premium</h4>
-                <p className="text-[10px] text-brand-muted font-semibold mt-0.5">Textura firme que não derrete rápido na pista de dança.</p>
-              </div>
-            </div>
-
-            {/* Photo 2: Sorvete de perto */}
-            <div className="bg-white border border-brand-purple/15 rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative aspect-video sm:aspect-square md:aspect-video rounded-2xl overflow-hidden bg-cream-bg">
-                <img
-                  src="/sorvete_de_perto.jpg"
-                  alt="Sorvetes variados"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="mt-3 px-2">
-                <h4 className="font-heading font-bold text-sm text-brand-purple">Combinações Infinitas</h4>
-                <p className="text-[10px] text-brand-muted font-semibold mt-0.5">Mais sabor e frescor com frutas e caldas à sua escolha.</p>
-              </div>
-            </div>
-
-            {/* Video 3: Festa Kids */}
-            <div className="bg-white border border-brand-purple/15 rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative aspect-video sm:aspect-square md:aspect-video rounded-2xl overflow-hidden bg-black">
-                <video
-                  src="/festa_kids.mp4"
-                  controls
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="mt-3 px-2">
-                <h4 className="font-heading font-bold text-sm text-brand-purple">Festa Infantil</h4>
-                <p className="text-[10px] text-brand-muted font-semibold mt-0.5">Sucesso absoluto com a criançada no Festeja Kids.</p>
-              </div>
-            </div>
-
-            {/* Photo 3: Fila de Atendimento */}
-            <div className="bg-white border border-brand-purple/15 rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative aspect-video sm:aspect-square md:aspect-video rounded-2xl overflow-hidden bg-cream-bg">
-                <img
-                  src="/fila_atendimento.jpg"
-                  alt="Fila de atendimento rápida"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="mt-3 px-2">
-                <h4 className="font-heading font-bold text-sm text-brand-purple">Operação Sem Fila</h4>
-                <p className="text-[10px] text-brand-muted font-semibold mt-0.5">Serviço dinâmico para garantir fluidez e diversão.</p>
-              </div>
-            </div>
-
-            {/* Photo 4: Mesa Decorada Real */}
-            <div className="bg-white border border-brand-purple/15 rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-300 col-span-1 sm:col-span-2 lg:col-span-2">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-cream-bg">
-                <img
-                  src="/imagem_principal.jpg"
-                  alt="Mesa decorada do Recanto"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="mt-3 px-2">
-                <h4 className="font-heading font-bold text-sm text-brand-purple">Estrutura Gourmet Completa</h4>
-                <p className="text-[10px] text-brand-muted font-semibold mt-0.5">Visual rústico e sofisticado que se integra perfeitamente à decoração da sua festa.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <GallerySection />
 
       {/* TEAM SECTION */}
-      <section className="py-24 bg-white border-t border-brand-purple/10">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-brand-pink font-heading font-black text-xs uppercase tracking-wider">
-              NOSSA EQUIPE
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-4xl text-brand-purple-dark mt-2 mb-4">
-              Quem Faz a Magia Acontecer ✨
-            </h2>
-            <p className="text-brand-muted text-sm font-semibold leading-relaxed">
-              Conheça as pessoas dedicadas a fazer do seu evento um momento doce, inesquecível e livre de preocupações.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {/* Card 1: Moisés */}
-            <div className="card-premium text-center">
-              <img
-                src="/equipe_completa.jpg"
-                alt="Moisés - Dono do Recanto"
-                className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-md mb-4"
-              />
-              <h3 className="font-heading font-bold text-lg text-brand-purple">Moisés</h3>
-              <span className="inline-block bg-brand-purple/10 text-brand-purple font-extrabold text-[9px] uppercase tracking-wider px-3 py-1 rounded-full mt-1 mb-3">Fundador & Dono</span>
-              <p className="text-xs text-brand-muted font-semibold leading-relaxed">Responsável direto por toda a logística operacional, transporte e pela excelência do açaí e sorvete gourmet servidos no seu grande dia.</p>
-            </div>
-
-            {/* Card 2: Naiara */}
-            <div className="card-premium text-center">
-              <img
-                src="/naiara_equipe.webp"
-                alt="Naiara - Sócia e Comercial"
-                className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-md mb-4"
-              />
-              <h3 className="font-heading font-bold text-lg text-brand-purple">Naiara</h3>
-              <span className="inline-block bg-brand-pink/10 text-brand-pink font-extrabold text-[9px] uppercase tracking-wider px-3 py-1 rounded-full mt-1 mb-3">Sócia & Comercial</span>
-              <p className="text-xs text-brand-muted font-semibold leading-relaxed">Sua parceira desde o primeiro contato. Cuida do atendimento no WhatsApp, elabora os orçamentos e planeja cada detalhe para o buffet ser perfeito.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TeamSection />
 
       {/* TESTIMONIALS SECTION */}
-      <section className="py-24 bg-brand-blue/10 border-y border-brand-purple/10">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-brand-purple font-heading font-black text-xs uppercase tracking-wider">
-              QUEM JÁ ADOÇOU A FESTA
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-4xl text-brand-purple-dark mt-2 mb-4">
-              O que os Cariocas dizem sobre o Recanto
-            </h2>
-            <p className="text-brand-muted text-sm font-semibold">
-              Histórias reais de noivos, pais e diretores de empresas que contrataram nossa equipe.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { text: '"Contratei o buffet de 3 horas para o aniversário de 8 anos da minha filha. As crianças e os adultos piraram! O açaí estava super cremoso e os acompanhamentos eram fresquinhos. O atendente foi super atencioso. Recomendo muito!"', author: 'Mariana Costa', role: 'Aniversário Infantil' },
-              { text: '"Colocamos o carrinho de açaí e sorvete na pista de dança do nosso casamento (pacote de 4 horas). Foi a melhor decisão que tomamos! Deu uma energia enorme nos convidados e a mesa ficou linda, super combinou com a decoração rústica do local."', author: 'Juliana & Thiago', role: 'Casamento no Campo' },
-              { text: '"Excelente serviço para o nosso evento corporativo de fim de ano. Foram muito pontuais, a estrutura é bonita e organizada, e o atendimento foi rápido mesmo com mais de 100 colaboradores. Aprovado!"', author: 'Ricardo Santos', role: 'Diretor de RH - Tech Solutions' }
-            ].map((t, i) => (
-              <div key={i} className="bg-white border border-brand-purple/15 p-8 rounded-2xl shadow-sm flex flex-col justify-between">
-                <p className="text-sm italic font-medium leading-relaxed text-brand-text mb-6">
-                  {t.text}
-                </p>
-                <div className="border-t border-brand-purple/10 pt-4 flex flex-col">
-                  <span className="font-heading font-bold text-sm text-brand-purple">{t.author}</span>
-                  <span className="text-[10px] font-bold text-brand-muted uppercase tracking-wider">{t.role}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* FAQ SECTION */}
       <section id="faq" className="py-24">
