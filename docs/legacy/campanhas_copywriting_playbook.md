@@ -1,7 +1,7 @@
-# 🎯 Playbook de Copywriting & Criativos: Recanto Eventos
+﻿# 🎯 Playbook de Copywriting & Criativos: Recanto Eventos
 
 > [!IMPORTANT]
-> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](docs/COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
+> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](../COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
 
 
 Este documento serve como guia estratégico para alinhar os textos persuasivos (copywriting) com as fotos e vídeos reais do **Recanto Eventos** na Landing Page e em campanhas de **Meta Ads (Facebook e Instagram)**. 

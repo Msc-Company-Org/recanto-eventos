@@ -1,5 +1,8 @@
 # 🤖 Planejamento do Chatbot Especialista em Vendas: Recanto Eventos
 
+> [!IMPORTANT]
+> Documento **arquivado**. Consolidado em [`docs/NAIARA-CHATBOT.md`](../NAIARA-CHATBOT.md), que é a fonte canônica atual da persona, arquitetura e roteiro do chatbot.
+
 Este documento detalha o planejamento técnico, a modelagem de persona (carioca), a arquitetura de integrações e o roteiro de treinamento/fine-tuning para o desenvolvimento do chatbot inteligente do **Recanto Eventos**.
 
 ---

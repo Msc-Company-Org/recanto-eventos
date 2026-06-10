@@ -2136,7 +2136,7 @@ export default function App() {
                 </div>
               )}
 
-              {/* Step 3: Payment details Stripe/Pix */}
+              {/* Step 3: Payment details (Pix/Card — simulação) */}
               {checkoutStep === 'payment' && (
                 <div className="max-w-xl mx-auto flex flex-col gap-5">
                   <h4 className="font-heading font-bold text-lg text-brand-purple-dark">Processar Pagamento Seguro</h4>

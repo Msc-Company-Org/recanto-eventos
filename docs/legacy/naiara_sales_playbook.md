@@ -1,5 +1,8 @@
 # 📖 Playbook de Vendas e Fluxo Conversacional: Naiara Chatbot 🍨
 
+> [!IMPORTANT]
+> Documento **arquivado**. Consolidado em [`docs/NAIARA-CHATBOT.md`](../NAIARA-CHATBOT.md), que é a fonte canônica atual da persona, táticas de venda e protocolo de transbordo.
+
 Este playbook serve como guia de treinamento e diretriz de prompt para o modelo **Qwen-2.5-7B-Instruct** que dará vida à **Naiara**, nossa especialista em vendas automatizada no WhatsApp e Web do **Recanto Eventos**.
 
 ---

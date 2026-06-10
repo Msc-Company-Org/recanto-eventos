@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DEFAULT_FILE = path.join(__dirname, 'naiara_dataset_v2.jsonl');
-const fallbackFile = path.join(__dirname, 'naiara_dataset.jsonl');
-const FILE_PATH = path.resolve(process.argv[2] || (fs.existsSync(DEFAULT_FILE) ? DEFAULT_FILE : fallbackFile));
+const FILE_PATH = path.resolve(process.argv[2] || DEFAULT_FILE);
 
 if (!fs.existsSync(FILE_PATH)) {
   console.error(`❌ File not found at: ${FILE_PATH}`);

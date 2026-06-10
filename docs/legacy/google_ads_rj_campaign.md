@@ -1,7 +1,7 @@
-# Planejamento de Campanha Google Ads: Rio de Janeiro 🚀
+﻿# Planejamento de Campanha Google Ads: Rio de Janeiro 🚀
 
 > [!IMPORTANT]
-> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](docs/COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
+> Este documento foi consolidado e parcialmente substituído pelo masterplan atual: [`docs/COPYWRITING-MASTERPLAN-2026-06-09.md`](../COPYWRITING-MASTERPLAN-2026-06-09.md). Use o masterplan como fonte principal para novas campanhas/copy.
 
 
 Este documento apresenta a estratégia de campanha do **Google Ads** estruturada para o mercado do **Rio de Janeiro (Grande Rio e Niterói)**, focada no serviço de Buffet de Açaí e Sorvete para Eventos.
